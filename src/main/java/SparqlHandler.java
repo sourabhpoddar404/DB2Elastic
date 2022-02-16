@@ -62,9 +62,9 @@ public class SparqlHandler {
 
 
 
-		String file1 = "C:\\AllDataFolder\\Dice_Job\\DBpedeia2elastic\\db2elastic\\src\\main\\java\\data.txt";
+		String file1 = "/data-disk/kg-fusion/en/genders_en.ttl";
 		Map<String,String> labelMap = new HashMap<>();
-		String file2 = "C:\\AllDataFolder\\Dice_Job\\DBpedeia2elastic\\db2elastic\\src\\main\\java\\datalabel.txt";
+		String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
 		try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -81,8 +81,10 @@ public class SparqlHandler {
 		try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
 			String line;
 			while ((line = br.readLine()) != null) {
+				String label = "";
 				String entity = line.substring(line.indexOf("<")+1,line.indexOf(">"));
-				String label = labelMap.get(entity);
+				if(labelMap.containsKey(entity))
+					label = labelMap.get(entity);
 				IndexRequest request = new IndexRequest(
 						"dbentityindexfull",
 						"doc");
