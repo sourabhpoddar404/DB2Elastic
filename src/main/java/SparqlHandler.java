@@ -67,10 +67,18 @@ public class SparqlHandler {
 		String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
 		try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
 			String line;
+			int i =0;
 			while ((line = br.readLine()) != null) {
-				String entity = line.substring(line.indexOf("<")+1,line.indexOf(">"));
-				String label = line.substring(line.indexOf("\"")+1,line.lastIndexOf("\""));
-				labelMap.put(entity,label);
+				i++;
+				try {
+					String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+					String label = line.substring(line.indexOf("\"") + 1, line.lastIndexOf("\""));
+					labelMap.put(entity, label);
+				}
+				catch (IndexOutOfBoundsException e)
+				{
+					System.out.println(i);
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
