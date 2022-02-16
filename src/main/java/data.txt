@@ -1,0 +1,115 @@
+<http://dbpedia.org/resource/Computer_accessibility> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Computer access
+ibility"@en .
+<http://dbpedia.org/resource/History_of_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "History of Afgh
+anistan"@en .
+<http://dbpedia.org/resource/Geography_of_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Geography of
+Afghanistan"@en .
+<http://dbpedia.org/resource/Demographics_of_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Demographi
+cs of Afghanistan"@en .
+<http://dbpedia.org/resource/Communications_in_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Communic
+ations in Afghanistan"@en .
+<http://dbpedia.org/resource/Transport_in_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Transport in
+Afghanistan"@en .
+<http://dbpedia.org/resource/Afghan_Armed_Forces> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Afghan Armed Force
+s"@en .
+<http://dbpedia.org/resource/Foreign_relations_of_Afghanistan> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Forei
+gn relations of Afghanistan"@en .
+<http://dbpedia.org/resource/Assistive_technology> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Assistive_technol
+ogy"@en .
+<http://dbpedia.org/resource/Amoeba> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Amoeba"@en .
+<http://dbpedia.org/resource/Demographics_of_Albania> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Demographics o
+f Albania"@en .
+<http://dbpedia.org/resource/History_of_Albania> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "History of Albania"
+@en .
+<http://dbpedia.org/resource/As_We_May_Think> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "As_We_May_Think"@en .
+<http://dbpedia.org/resource/Economy_of_Albania> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Economy of Albania"
+@en .
+<http://dbpedia.org/resource/Politics_of_Albania> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Politics of Albani
+a"@en .
+<http://dbpedia.org/resource/Abacus> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abacus"@en .
+<http://dbpedia.org/resource/Abalone> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abalone"@en .
+<http://dbpedia.org/resource/Afroasiatic_languages> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Afroasiatic lang
+uages"@en .
+<http://dbpedia.org/resource/Constructed_language> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Constructed langu
+age"@en .
+<http://dbpedia.org/resource/Artificial_language> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Artificial languag
+e"@en .
+<http://dbpedia.org/resource/Abbadid_dynasty> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbadid dynasty"@en .
+<http://dbpedia.org/resource/Abbess> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbess"@en .
+<http://dbpedia.org/resource/Abbeville> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbeville"@en .
+<http://dbpedia.org/resource/Abbey> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbey"@en .
+<http://dbpedia.org/resource/Abbot> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbot"@en .
+<http://dbpedia.org/resource/Atlas_Shrugged> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Atlas Shrugged"@en .
+<http://dbpedia.org/resource/Abbreviation> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abbreviation"@en .
+<http://dbpedia.org/resource/Constructed_language> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Constructed langu
+age"@en .
+<http://dbpedia.org/resource/Atlas_Shrugged> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Atlas Shrugged"@en .
+<http://dbpedia.org/resource/List_of_Atlas_Shrugged_characters> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "List
+ of Atlas Shrugged characters"@en .
+<http://dbpedia.org/resource/Atlas_Shrugged> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Atlas Shrugged"@en .
+<http://dbpedia.org/resource/African_Americans> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "African Americans"@e
+n .
+<http://dbpedia.org/resource/Adolf_Hitler> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Adolf Hitler"@en .
+<http://dbpedia.org/resource/Abecedarian> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abecedarian"@en .
+<http://dbpedia.org/resource/Cain_and_Abel> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Cain and Abel"@en .
+<http://dbpedia.org/resource/Existence_of_God> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Existence of God"@en
+.
+<http://dbpedia.org/resource/Abensberg> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Abensberg"@en .
+<http://dbpedia.org/resource/Aberdeen,_South_Dakota> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Aberdeen, South
+ Dakota"@en .
+<http://dbpedia.org/resource/Arthur_Koestler> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Arthur Koestler"@en .
+<http://dbpedia.org/resource/Academy_Awards> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Academy Awards"@en .
+<http://dbpedia.org/resource/ASCII_art> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "ASCII art"@en .
+<http://dbpedia.org/resource/Alexander_the_Great> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Alexander the Grea
+t"@en .
+<http://dbpedia.org/resource/Anchorage,_Alaska> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Anchorage, Alaska"@e
+n .
+<http://dbpedia.org/resource/Anarchy> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Anarchy"@en .
+<http://dbpedia.org/resource/Logical_form> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Logical form"@en .
+<http://dbpedia.org/resource/Ayn_Rand> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Ayn Rand"@en .
+<http://dbpedia.org/resource/Austrian_German> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Austrian German"@en .
+<http://dbpedia.org/resource/Academy_Award_for_Best_Picture> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Academy
+ Award for Best Picture"@en .
+<http://dbpedia.org/resource/Ivory_tower> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Ivory tower"@en .
+<http://dbpedia.org/resource/Axiom_of_choice> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Axiom of choice"@en .
+<http://dbpedia.org/resource/American_football> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "American football"@e
+n .
+<http://dbpedia.org/resource/Anna_Kournikova> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Anna Kournikova"@en .
+<http://dbpedia.org/resource/Andorra> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Andorra"@en .
+<http://dbpedia.org/resource/Anarcho-capitalism> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Anarcho-capitalism"
+@en .
+<http://dbpedia.org/resource/Lists_of_actors> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Lists of actors"@en .
+<http://dbpedia.org/resource/Anarcho-capitalism> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "anarcho-capitalism"
+@en .
+<http://dbpedia.org/resource/Lists_of_actors> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Lists of actors"@en .
+<http://dbpedia.org/resource/Automorphism> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Automorphism"@en .
+<http://dbpedia.org/resource/Austroasiatic_languages> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Austroasiatic
+languages"@en .
+<http://dbpedia.org/resource/An_American_in_Paris> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "An American in Pa
+ris"@en .
+<http://dbpedia.org/resource/Action_film> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Action film"@en .
+<http://dbpedia.org/resource/Africa> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Africa"@en .
+<http://dbpedia.org/resource/Statistics> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Statistics"@en .
+<http://dbpedia.org/resource/English_alphabet> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "named"@en .
+<http://dbpedia.org/resource/Letter_(alphabet)> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "letter"@en .
+<http://dbpedia.org/resource/Vowel> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "vowel"@en .
+<http://dbpedia.org/resource/ISO_basic_Latin_alphabet> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "ISO basic Lat
+in alphabet"@en .
+<http://dbpedia.org/resource/Alpha> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "alpha"@en .
+<http://dbpedia.org/resource/Italic_type> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "italic type"@en .
+<http://dbpedia.org/resource/Aleph> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "aleph"@en .
+<http://dbpedia.org/resource/Alpha> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Alpha"@en .
+<http://dbpedia.org/resource/Phoenician_alphabet> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Phoenician alphabe
+t"@en .
+<http://dbpedia.org/resource/Consonant> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "consonant"@en .
+<http://dbpedia.org/resource/Abjad> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "abjad"@en .
+<http://dbpedia.org/resource/Alphabet> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "alphabet"@en .
+<http://dbpedia.org/resource/Pictogram> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "pictogram"@en .
+<http://dbpedia.org/resource/Proto-Sinaitic_script> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "proto-Sinaitic s
+cript"@en .
+<http://dbpedia.org/resource/Egyptian_hieroglyphs> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Egyptian hierogly
+phs"@en .
+<http://dbpedia.org/resource/Hebrew_alphabet> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Hebrew"@en .
+<http://dbpedia.org/resource/Arabic_script> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Arabic"@en .
+<http://dbpedia.org/resource/Blackletter> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Blackletter"@en .
+<http://dbpedia.org/resource/Uncial_script> <http://dbpedia.org/ontology/wikiPageWikiLinkText> "Uncial"@en .
