@@ -61,8 +61,8 @@ public class SparqlHandler {
         client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9200, "http")));
-        //createIndex("dbentityindexfull");
-        String file1 = "/data-disk/kg-fusion/en/genders_en.ttl";
+        createIndex("dbentityindexfull");
+        String file1 = "/data-disk/kg-fusion/en/commons_page_links_en.ttl";
         Map<String, String> labelMap = new HashMap<>();
         String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
         try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
@@ -83,30 +83,48 @@ public class SparqlHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        for (Map.Entry entry : labelMap.entrySet())
+        {
+            IndexRequest request = new IndexRequest(
+                    "dbentityindexfull",
+                    "doc");
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("label", entry.getValue());
+            jsonMap.put("uri", entry.getKey());
+
+            request.source(jsonMap);
+            try {
+                IndexResponse indexResponse = client.index(request);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         int i = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
             String line;
 
 
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && i <59575) {
                 i++;
 
                 String label = "";
                 try {
-                    if(i>4204)
+                    if(i>0)
                     {
                     String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
-                    if (labelMap.containsKey(entity))
-                        label = labelMap.get(entity);
-                    IndexRequest request = new IndexRequest(
-                            "dbentityindexfull",
-                            "doc");
-                    Map<String, Object> jsonMap = new HashMap<>();
-                    jsonMap.put("label", label);
-                    jsonMap.put("uri", entity);
+                    if (!labelMap.containsKey(entity)) {
+                        IndexRequest request = new IndexRequest(
+                                "dbentityindexfull",
+                                "doc");
+                        Map<String, Object> jsonMap = new HashMap<>();
+                        jsonMap.put("label", label);
+                        jsonMap.put("uri", entity);
 
-                    request.source(jsonMap);
-                    IndexResponse indexResponse = client.index(request);
+                        request.source(jsonMap);
+                        IndexResponse indexResponse = client.index(request);
+                    }
 
                 }
                 } catch (IndexOutOfBoundsException | IOException e) {
