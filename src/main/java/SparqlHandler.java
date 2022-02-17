@@ -91,29 +91,38 @@ public class SparqlHandler {
 		try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
 			String line;
 
-			while ((line = br.readLine()) != null) {
-				i++;
-				String label = "";
-				String entity = line.substring(line.indexOf("<")+1,line.indexOf(">"));
-				if(labelMap.containsKey(entity))
-					label = labelMap.get(entity);
-				IndexRequest request = new IndexRequest(
-						"dbentityindexfull",
-						"doc");
-				Map<String, Object> jsonMap = new HashMap<>();
-				jsonMap.put("label", label);
-				jsonMap.put("uri", entity);
+			try {
+				while ((line = br.readLine()) != null) {
+					i++;
+					String label = "";
+					String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+					if (labelMap.containsKey(entity))
+						label = labelMap.get(entity);
+					IndexRequest request = new IndexRequest(
+							"dbentityindexfull",
+							"doc");
+					Map<String, Object> jsonMap = new HashMap<>();
+					jsonMap.put("label", label);
+					jsonMap.put("uri", entity);
 
-				request.source(jsonMap);
-				IndexResponse indexResponse = client.index(request);
-
+					request.source(jsonMap);
+					IndexResponse indexResponse = client.index(request);
+				}
+			}
+			catch (IndexOutOfBoundsException | IOException e)
+			{
+				System.out.println(i);
 			}
 
 
-		} catch (Exception e) {
-			System.out.print("indexing :"  + i);
-			e.printStackTrace();
+			} catch (FileNotFoundException fileNotFoundException) {
+			fileNotFoundException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
+
+
+
 
 		//entity_list = generateOutputList(output , keyList, "dbentityindexfull");
 			//System.out.println(entity_list.get(0).label);
