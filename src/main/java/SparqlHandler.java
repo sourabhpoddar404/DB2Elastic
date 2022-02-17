@@ -90,8 +90,11 @@ public class SparqlHandler {
 
             while ((line = br.readLine()) != null) {
                 i++;
+
                 String label = "";
                 try {
+                    if(i>4204)
+                    {
                     String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
                     if (labelMap.containsKey(entity))
                         label = labelMap.get(entity);
@@ -104,7 +107,10 @@ public class SparqlHandler {
 
                     request.source(jsonMap);
                     IndexResponse indexResponse = client.index(request);
+
+                }
                 } catch (IndexOutOfBoundsException | IOException e) {
+                    e.printStackTrace();
                     System.out.println(i);
                 }
 
