@@ -61,14 +61,14 @@ public class SparqlHandler {
 	public ArrayList<Entity> fetchEntitiesFromFiles() throws UnsupportedEncodingException{
 
 
-
+		createIndex("enricheddbclassindex");
 		String file1 = "/data-disk/kg-fusion/en/genders_en.ttl";
 		Map<String,String> labelMap = new HashMap<>();
 		String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
 		try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
 			String line;
 			int i =0;
-			while ((line = br.readLine()) != null) {
+			while ((line = br.readLine()) != null && i < 12845254) {
 				i++;
 				try {
 					String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
@@ -85,10 +85,12 @@ public class SparqlHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		int i =0;
 		try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
 			String line;
+
 			while ((line = br.readLine()) != null) {
+				i++;
 				String label = "";
 				String entity = line.substring(line.indexOf("<")+1,line.indexOf(">"));
 				if(labelMap.containsKey(entity))
@@ -102,12 +104,12 @@ public class SparqlHandler {
 
 				request.source(jsonMap);
 				IndexResponse indexResponse = client.index(request);
+
 			}
 
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (Exception e) {
+			System.out.print("indexing :"  + i);
 			e.printStackTrace();
 		}
 
