@@ -60,8 +60,10 @@ public class SparqlHandler {
 
 	public ArrayList<Entity> fetchEntitiesFromFiles() throws UnsupportedEncodingException{
 
-
-		createIndex("enricheddbclassindex");
+		client = new RestHighLevelClient(
+				RestClient.builder(
+						new HttpHost("porque.cs.upb.de", 9200, "http")));
+		//createIndex("dbentityindexfull");
 		String file1 = "/data-disk/kg-fusion/en/genders_en.ttl";
 		Map<String,String> labelMap = new HashMap<>();
 		String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
