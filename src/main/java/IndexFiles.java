@@ -19,8 +19,8 @@ public class IndexFiles {
     public void indexttlfile()
     {
         Map<String, String> labelMap = new LinkedHashMap<>();
-        String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
-        try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
+        String labelFile = "/data-disk/kg-fusion/en/labels_en.ttl";
+        try (BufferedReader br = new BufferedReader(new FileReader(labelFile))) {
             String line;
             int i = 0;
             while ((line = br.readLine()) != null && i < 12845254) {
@@ -41,41 +41,33 @@ public class IndexFiles {
         client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
-        String file1 = "/data-disk/kg-fusion/en/category_labels_en.ttl";
+
+
+        String dataFile = "/data-disk/kg-fusion/en/anchor_text_en.ttl";
         BulkRequest bulkRequest = new BulkRequest();
-        int numoflines = 1475017;
+        int numoflines = 163264419;
         int i = 0;
-        int counter =0;
-        try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
+
+        Map<String, String> fileEntityMap = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile))) {
             String line;
             while ((line = br.readLine()) != null && i <numoflines) {
                 IndexRequest request = null;
                 i++;
-
                 String label = "";
                 try {
                     if(i>0)
                     {
                         String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
-                        if (!labelMap.containsKey(entity)) {
-                            request = new IndexRequest(
-                                    "dbentityindex",
-                                    "doc");
-                            Map<String, Object> jsonMap = new HashMap<>();
-                            jsonMap.put("label", label);
-                            jsonMap.put("uri", entity);
-                            System.out.print(i + " " + entity + " " + label);
 
-                            request.source(jsonMap);
-                            bulkRequest.add(request);
-                            counter++;
-                            if(counter == 10000)
-                            {
-                                counter = 0;
-                                BulkResponse bulkResponse = client.bulk(bulkRequest);
-                                bulkRequest = new BulkRequest();
-                            }
-                            //IndexResponse indexResponse = client.index(request);
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap.containsKey(entity))
+                                fileEntityMap.put(entity,label);
+
                         }
 
                     }
@@ -84,6 +76,27 @@ public class IndexFiles {
                     System.out.println(i);
                 }
             }
+            System.out.print(fileEntityMap.size());
+            /*
+            int counter =0;
+            for (Map.Entry entry: fileEntityMap.entrySet()) {
+                String entity = (String) entry.getKey();
+                String label = (String) entry.getValue();
+                Map<String, Object> jsonMap = new HashMap<>();
+                jsonMap.put("label", label);
+                jsonMap.put("uri", entity);
+                IndexRequest request = request = new IndexRequest(
+                        "dbentityindex",
+                        "doc");
+                request.source(jsonMap);
+                bulkRequest.add(request);
+                counter++;
+                if (counter == 10000) {
+                    counter = 0;
+                    BulkResponse bulkResponse = client.bulk(bulkRequest);
+                    bulkRequest = new BulkRequest();
+                }
+            }*/
 
             BulkResponse bulkResponse = client.bulk(bulkRequest);
         } catch (FileNotFoundException fileNotFoundException) {
