@@ -38,9 +38,9 @@ public class IndexFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        client = new RestHighLevelClient(
+        /*client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost("porque.cs.upb.de", 9400, "http")));
+                        new HttpHost("porque.cs.upb.de", 9400, "http")));*/
 
 
         String dataFile = "/data-disk/kg-fusion/en/anchor_text_en.ttl";
