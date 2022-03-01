@@ -41,10 +41,9 @@ public class IndexFiles {
         client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
-        //createIndex("dbentityindex");
-        String file1 = "/data-disk/kg-fusion/en/commons_page_links_en.ttl";
+        String file1 = "/data-disk/kg-fusion/en/category_labels_en.ttl";
         BulkRequest bulkRequest = new BulkRequest();
-        int numoflines = 59575;
+        int numoflines = 1475017;
         int i = 0;
         int counter =0;
         try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
