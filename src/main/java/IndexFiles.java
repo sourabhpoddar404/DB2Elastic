@@ -65,6 +65,7 @@ public class IndexFiles {
                             Map<String, Object> jsonMap = new HashMap<>();
                             jsonMap.put("label", label);
                             jsonMap.put("uri", entity);
+                            System.out.print(i + " " + entity + " " + label);
 
                             request.source(jsonMap);
                             bulkRequest.add(request);

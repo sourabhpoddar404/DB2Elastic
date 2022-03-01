@@ -12,8 +12,10 @@ public static void main(String arg[]) throws UnsupportedEncodingException {
 
     ArrayList<Entity> entity_list = null;
 
-        SparqlHandler sparqlHandler = new SparqlHandler();
-        entity_list = sparqlHandler.fetchEntitiesFromFiles();
+            IndexFiles indexFiles = new IndexFiles();
+            indexFiles.indexttlfile();
+        //SparqlHandler sparqlHandler = new SparqlHandler();
+        //entity_list = sparqlHandler.fetchEntitiesFromFiles();
         //entity_list = sparqlHandler.fetchClasses();
         // entity_list = sparqlHandler.fetchProperties();
       // entity_list = sparqlHandler.fetchOntologies();
