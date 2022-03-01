@@ -63,7 +63,7 @@ public class SparqlHandler {
 
         client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost("porque.cs.upb.de", 9200, "http")));
+                        new HttpHost("porque.cs.upb.de", 9400, "http")));
         createIndex("dbentityindexfull");
         String file1 = "/data-disk/kg-fusion/en/commons_page_links_en.ttl";
         Map<String, String> labelMap = new LinkedHashMap<>();
