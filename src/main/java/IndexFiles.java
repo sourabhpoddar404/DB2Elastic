@@ -38,13 +38,13 @@ public class IndexFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*client = new RestHighLevelClient(
+        client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost("porque.cs.upb.de", 9400, "http")));*/
+                        new HttpHost("porque.cs.upb.de", 9400, "http")));
 
 
         String dataFile = "/data-disk/kg-fusion/en/anchor_text_en.ttl";
-        BulkRequest bulkRequest = new BulkRequest();
+
         int numoflines = 163264419;
         int i = 0;
 
@@ -77,7 +77,7 @@ public class IndexFiles {
                 }
             }
             System.out.print(fileEntityMap.size());
-
+            BulkRequest bulkRequest = new BulkRequest();
             int counter =0;
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
