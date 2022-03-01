@@ -64,7 +64,7 @@ public class IndexFiles {
 
                             label = entity.substring(entity.indexOf("resource/")+9);
 
-                            System.out.print(i + " " + entity + " " + label);
+                            //System.out.print(i + " " + entity + " " + label);
                             if(!fileEntityMap.containsKey(entity))
                                 fileEntityMap.put(entity,label);
 
@@ -77,7 +77,7 @@ public class IndexFiles {
                 }
             }
             System.out.print(fileEntityMap.size());
-            /*
+
             int counter =0;
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
@@ -96,7 +96,7 @@ public class IndexFiles {
                     BulkResponse bulkResponse = client.bulk(bulkRequest);
                     bulkRequest = new BulkRequest();
                 }
-            }*/
+            }
 
             BulkResponse bulkResponse = client.bulk(bulkRequest);
         } catch (FileNotFoundException fileNotFoundException) {
