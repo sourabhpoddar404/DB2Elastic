@@ -3,6 +3,8 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RestClient;
@@ -13,6 +15,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -56,14 +59,14 @@ public class SparqlHandler {
 
     private RestHighLevelClient client;
 
-    public ArrayList<Entity> fetchEntitiesFromFiles() throws UnsupportedEncodingException {
+    public ArrayList<Entity> fetchEntitiesFromFiles()  {
 
         client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9200, "http")));
         createIndex("dbentityindexfull");
         String file1 = "/data-disk/kg-fusion/en/commons_page_links_en.ttl";
-        Map<String, String> labelMap = new HashMap<>();
+        Map<String, String> labelMap = new LinkedHashMap<>();
         String file2 = "/data-disk/kg-fusion/en/labels_en.ttl";
         try (BufferedReader br = new BufferedReader(new FileReader(file2))) {
             String line;
@@ -83,24 +86,35 @@ public class SparqlHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        BulkRequest bulkRequest = new BulkRequest();;
+        int counter= 0;
         for (Map.Entry entry : labelMap.entrySet())
         {
+            counter++;
             IndexRequest request = new IndexRequest(
                     "dbentityindexfull",
                     "doc");
             Map<String, Object> jsonMap = new HashMap<>();
             jsonMap.put("label", entry.getValue());
             jsonMap.put("uri", entry.getKey());
-
             request.source(jsonMap);
-            try {
-                IndexResponse indexResponse = client.index(request);
-            } catch (IOException e) {
-                e.printStackTrace();
+            bulkRequest.add(request);
+            if(counter == 10000)
+            {
+                counter = 0;
+                bulkRequest = new BulkRequest();
+                try {
+                    BulkResponse indexResponse = client.bulk(bulkRequest);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-
+        try {
+            BulkResponse bulkResponse = client.bulk(bulkRequest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         int i = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(file1))) {
             String line;
