@@ -86,13 +86,13 @@ public class SparqlHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        BulkRequest bulkRequest = new BulkRequest();;
+        BulkRequest bulkRequest = new BulkRequest();
         int counter= 0;
         for (Map.Entry entry : labelMap.entrySet())
         {
             counter++;
             IndexRequest request = new IndexRequest(
-                    "dbentityindexfull",
+                    "dbentityindex",
                     "doc");
             Map<String, Object> jsonMap = new HashMap<>();
             jsonMap.put("label", entry.getValue());
@@ -131,7 +131,7 @@ public class SparqlHandler {
                     String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
                     if (!labelMap.containsKey(entity)) {
                         IndexRequest request = new IndexRequest(
-                                "dbentityindexfull",
+                                "dbentityindex",
                                 "doc");
                         Map<String, Object> jsonMap = new HashMap<>();
                         jsonMap.put("label", label);
