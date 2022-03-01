@@ -102,12 +102,13 @@ public class SparqlHandler {
             if(counter == 10000)
             {
                 counter = 0;
-                bulkRequest = new BulkRequest();
+
                 try {
                     BulkResponse indexResponse = client.bulk(bulkRequest);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                bulkRequest = new BulkRequest();
             }
         }
         try {
