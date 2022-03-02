@@ -43,9 +43,9 @@ public class IndexFiles {
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
 
 
-        String dataFile = "/data-disk/kg-fusion/en/long_abstracts_en.ttl";
+        String dataFile = "/data-disk/kg-fusion/en/mappingbased_literals_en.ttl";
 
-        int numoflines = 4935281;
+        int numoflines = 14388539;
         int i = 0;
 
         Map<String, String> fileEntityMap = new LinkedHashMap<>();
