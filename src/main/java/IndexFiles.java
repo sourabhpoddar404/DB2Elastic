@@ -41,6 +41,49 @@ public class IndexFiles {
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
 
+        String dataFile5 = "/data-disk/kg-fusion/en/short_abstracts_en.ttl";
+
+        int numoflines5 = 4935281;
+        int i5 = 0;
+
+        Map<String, String> fileEntityMap5 = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile5))) {
+            String line;
+            while ((line = br.readLine()) != null && i5 <numoflines5) {
+                IndexRequest request = null;
+                i5++;
+                String label = "";
+                try {
+                    if(i5>0)
+                    {
+                        String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            //System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap5.containsKey(entity))
+                                fileEntityMap5.put(entity,label);
+
+                        }
+
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    System.out.println(i5);
+                }
+            }
+            System.out.print(fileEntityMap5.size());
+
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+
 
         String dataFile4 = "/data-disk/kg-fusion/en/persondata_en.ttl";
 
@@ -215,9 +258,9 @@ public class IndexFiles {
         }
 
 
-        String dataFile = "/data-disk/kg-fusion/en/short_abstracts_en.ttl";
+        String dataFile = "/data-disk/kg-fusion/en/skos_categories_en.ttl";
 
-        int numoflines = 4935281;
+        int numoflines = 6083031;
         int i = 0;
 
         Map<String, String> fileEntityMap = new LinkedHashMap<>();
@@ -254,7 +297,7 @@ public class IndexFiles {
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
                 String label = (String) entry.getValue();
-                if(!fileEntityMap1.containsKey(entity) && !fileEntityMap2.containsKey(entity) && !fileEntityMap1.containsKey(entity) && !fileEntityMap4.containsKey(entity)) {
+                if(!fileEntityMap1.containsKey(entity) && !fileEntityMap2.containsKey(entity) && !fileEntityMap3.containsKey(entity) && !fileEntityMap4.containsKey(entity) && !fileEntityMap5.containsKey(entity)) {
                     Map<String, Object> jsonMap = new HashMap<>();
                     jsonMap.put("label", label);
                     jsonMap.put("uri", entity);
