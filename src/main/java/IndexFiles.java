@@ -43,9 +43,60 @@ public class IndexFiles {
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
 
 
-        String dataFile = "/data-disk/kg-fusion/en/mappingbased_literals_en.ttl";
+        String dataFile1 = "/data-disk/kg-fusion/en/mappingbased_literals_en.ttl";
 
-        int numoflines = 14388539;
+        int numoflines1 = 14388539;
+        int i1 = 0;
+
+        Map<String, String> fileEntityMap1 = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile1))) {
+            String line;
+            while ((line = br.readLine()) != null && i1 <numoflines1) {
+                IndexRequest request = null;
+                i1++;
+                String label = "";
+                try {
+                    if(i1>0)
+                    {
+                        String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            //System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap1.containsKey(entity))
+                                fileEntityMap1.put(entity,label);
+
+                        }
+
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    System.out.println(i1);
+                }
+            }
+            System.out.print(fileEntityMap1.size());
+
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
+        String dataFile = "/data-disk/kg-fusion/en/mappingbased_objects_en.ttl";
+
+        int numoflines = 18746176;
         int i = 0;
 
         Map<String, String> fileEntityMap = new LinkedHashMap<>();
@@ -82,15 +133,17 @@ public class IndexFiles {
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
                 String label = (String) entry.getValue();
-                Map<String, Object> jsonMap = new HashMap<>();
-                jsonMap.put("label", label);
-                jsonMap.put("uri", entity);
-                IndexRequest request = request = new IndexRequest(
-                        "dbentityindex",
-                        "doc");
-                request.source(jsonMap);
-                bulkRequest.add(request);
-                counter++;
+                if(!fileEntityMap1.containsKey(entity)) {
+                    Map<String, Object> jsonMap = new HashMap<>();
+                    jsonMap.put("label", label);
+                    jsonMap.put("uri", entity);
+                    IndexRequest request = request = new IndexRequest(
+                            "dbentityindex",
+                            "doc");
+                    request.source(jsonMap);
+                    bulkRequest.add(request);
+                    counter++;
+                }
                 if (counter == 10000) {
                     counter = 0;
                     BulkResponse bulkResponse = client.bulk(bulkRequest);
