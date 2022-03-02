@@ -2,7 +2,6 @@ import org.apache.http.HttpHost;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 
@@ -41,6 +40,51 @@ public class IndexFiles {
         client = new RestHighLevelClient(
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
+
+
+        String dataFile4 = "/data-disk/kg-fusion/en/persondata_en.ttl";
+
+        int numoflines4 = 10310107;
+        int i4 = 0;
+
+        Map<String, String> fileEntityMap4 = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile4))) {
+            String line;
+            while ((line = br.readLine()) != null && i4 <numoflines4) {
+                IndexRequest request = null;
+                i4++;
+                String label = "";
+                try {
+                    if(i4>0)
+                    {
+                        String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            //System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap4.containsKey(entity))
+                                fileEntityMap4.put(entity,label);
+
+                        }
+
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    System.out.println(i4);
+                }
+            }
+            System.out.print(fileEntityMap4.size());
+
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+
 
         String dataFile3 = "/data-disk/kg-fusion/en/long_abstracts_en.ttl";
 
@@ -171,9 +215,9 @@ public class IndexFiles {
         }
 
 
-        String dataFile = "/data-disk/kg-fusion/en/persondata_en.ttl";
+        String dataFile = "/data-disk/kg-fusion/en/short_abstracts_en.ttl";
 
-        int numoflines = 10310107;
+        int numoflines = 4935281;
         int i = 0;
 
         Map<String, String> fileEntityMap = new LinkedHashMap<>();
@@ -210,7 +254,7 @@ public class IndexFiles {
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
                 String label = (String) entry.getValue();
-                if(!fileEntityMap1.containsKey(entity) && !fileEntityMap2.containsKey(entity) && !fileEntityMap1.containsKey(entity)) {
+                if(!fileEntityMap1.containsKey(entity) && !fileEntityMap2.containsKey(entity) && !fileEntityMap1.containsKey(entity) && !fileEntityMap4.containsKey(entity)) {
                     Map<String, Object> jsonMap = new HashMap<>();
                     jsonMap.put("label", label);
                     jsonMap.put("uri", entity);
