@@ -42,6 +42,91 @@ public class IndexFiles {
                 RestClient.builder(
                         new HttpHost("porque.cs.upb.de", 9400, "http")));
 
+        String dataFile3 = "/data-disk/kg-fusion/en/long_abstracts_en.ttl";
+
+        int numoflines3 = 4935281;
+        int i3 = 0;
+
+        Map<String, String> fileEntityMap3 = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile3))) {
+            String line;
+            while ((line = br.readLine()) != null && i3 <numoflines3) {
+                IndexRequest request = null;
+                i3++;
+                String label = "";
+                try {
+                    if(i3>0)
+                    {
+                        String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            //System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap3.containsKey(entity))
+                                fileEntityMap3.put(entity,label);
+
+                        }
+
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    System.out.println(i3);
+                }
+            }
+            System.out.print(fileEntityMap3.size());
+
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+
+
+        String dataFile2 = "/data-disk/kg-fusion/en/mappingbased_objects_en.ttl";
+
+        int numoflines2 = 18746176;
+        int i2 = 0;
+
+        Map<String, String> fileEntityMap2 = new LinkedHashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(dataFile2))) {
+            String line;
+            while ((line = br.readLine()) != null && i2 <numoflines2) {
+                IndexRequest request = null;
+                i2++;
+                String label = "";
+                try {
+                    if(i2>0)
+                    {
+                        String entity = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+
+                        if (!labelMap.containsKey(entity)) {
+
+                            label = entity.substring(entity.indexOf("resource/")+9);
+
+                            //System.out.print(i + " " + entity + " " + label);
+                            if(!fileEntityMap2.containsKey(entity))
+                                fileEntityMap2.put(entity,label);
+
+                        }
+
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                    System.out.println(i2);
+                }
+            }
+            System.out.print(fileEntityMap2.size());
+
+
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
 
         String dataFile1 = "/data-disk/kg-fusion/en/mappingbased_literals_en.ttl";
 
@@ -86,17 +171,9 @@ public class IndexFiles {
         }
 
 
+        String dataFile = "/data-disk/kg-fusion/en/persondata_en.ttl";
 
-
-
-
-
-
-
-
-        String dataFile = "/data-disk/kg-fusion/en/mappingbased_objects_en.ttl";
-
-        int numoflines = 18746176;
+        int numoflines = 10310107;
         int i = 0;
 
         Map<String, String> fileEntityMap = new LinkedHashMap<>();
@@ -133,7 +210,7 @@ public class IndexFiles {
             for (Map.Entry entry: fileEntityMap.entrySet()) {
                 String entity = (String) entry.getKey();
                 String label = (String) entry.getValue();
-                if(!fileEntityMap1.containsKey(entity)) {
+                if(!fileEntityMap1.containsKey(entity) && !fileEntityMap2.containsKey(entity) && !fileEntityMap1.containsKey(entity)) {
                     Map<String, Object> jsonMap = new HashMap<>();
                     jsonMap.put("label", label);
                     jsonMap.put("uri", entity);
